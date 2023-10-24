@@ -32,7 +32,7 @@ export default function CreateTodo({ user, handleAddTodo }) {
       </div>
       <div>
         <label htmlFor="create-title">Title:</label>
-        <input type="text" value={title} onChange={handleTitle()} name="create-title" id="create-title" />
+        <input type="text" value={title} onChange={handleTitle} name="create-title" id="create-title" />
       </div>
       <div>Description:
       <textarea value={description} onChange={handleDescription} />
