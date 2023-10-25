@@ -3,14 +3,15 @@ import { useState } from "react";
 export default function Todo({title, description, author, dateCreated }) {
   const [completed, setCompleted] = useState(false);
   const [dateCompleted, setDateCompleted] = useState("");
-  function handleChange(e) {
-    setCompleted(e.target.checked);
-    if (e.target.checked) {
+
+  const handleToggleComplete = () => {
+    setCompleted(!completed);
+    if (!completed) {
       setDateCompleted(Date.now());
     } else {
       setDateCompleted(null);
     }
-  }
+  };
   return (
     <div>
       <h3>{title}</h3>
@@ -22,12 +23,10 @@ export default function Todo({title, description, author, dateCreated }) {
       <div>
         <p>Date Created: {new Date(dateCreated).toLocaleString()}</p>
       </div>
-      <label>Completed</label>
-      <input
-        type="checkbox"
-        checked={completed}
-        onChange={handleChange}
-      />
+      <label> Completed </label>
+      <button onClick={handleToggleComplete}>
+        {completed ? "Incomplete" : "Done"}
+      </button>
       { dateCompleted && (
         <p>Date Completed: {new Date(dateCompleted).toLocaleString()}</p>
       )}

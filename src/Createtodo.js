@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 export default function CreateTodo({ user, handleAddTodo }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -16,14 +17,13 @@ export default function CreateTodo({ user, handleAddTodo }) {
     handleAddTodo(newTodo);
   }
 
+
   function handleTitle(evt) {
     setTitle(evt.target.value);
   }
   function handleDescription(evt) {
     setDescription(evt.target.value);
   }
-
-
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
@@ -39,6 +39,7 @@ export default function CreateTodo({ user, handleAddTodo }) {
       </div>
       
       <input type="submit" value="Create" onClick={handleCreate}/>
+      
     </form>
   );
 }
