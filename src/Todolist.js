@@ -1,11 +1,10 @@
 import Todo from "./Todo";
-import { v4 as uuidv4 } from 'uuid';
-export default function TodoList({ todos = [], handleDeleteTodo, handleToggleTodo}) {
+
+export default function TodoList({ todos = [], handleDeleteTodo}) {
   return (
     <div>
-      {todos.map((t, i) => (
-        <div key={uuidv4()}>
-        
+      {todos.map((t) => (
+        <div key={t.id}>
           <Todo {...t}  />
           <button  onClick={()=>handleDeleteTodo(t.id)}>Delete</button>      
         </div>

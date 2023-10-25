@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 function userReducer(state, action) {
   switch (action.type) {
     case "LOGIN":
@@ -13,6 +15,7 @@ function todoReducer(state, action) {
   switch (action.type) {
     case "CREATE_TODO":
       const newTodo = {
+        id: uuidv4(),
         title: action.title,
         content: action.description,
         author: action.author,
@@ -26,7 +29,7 @@ function todoReducer(state, action) {
             );
         return toggleTodos;    
     case "DELETE_TODO":
-        const updateTodo= state.filter(todos=> todos !==action.todos);
+        const updateTodo= state.filter(todos => todos.id !== action.todos);
         return updateTodo;
     default:
       return state;
