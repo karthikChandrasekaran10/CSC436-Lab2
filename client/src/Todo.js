@@ -18,7 +18,7 @@ export default function Todo({title, description, author, dateCreated }) {
   return (
     <div>
       <h3 style={{color: secondaryColor}}>{title}</h3>
-      <div>{description}</div>
+      <p><b>{description}</b></p>
       <br />
       <p>
         Written by <b>{author}</b>

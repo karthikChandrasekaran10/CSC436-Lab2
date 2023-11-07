@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { StateContext } from "./Context";
+import { useResource } from "react-request-hook";
 
 
-export default function CreateTodo({ user, handleAddTodo }) {
+export default function CreateTodo({ handleAddTodo }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  
+  const {state, dispatch} = useContext(StateContext);
+  const {user} = state;
+
+  const [todo , CreateTodo ] = useResource(({ title, description, author, dateCreated }) => ({
+    url: '/todos',
+    method: 'post',
+    data: { title, description, author, dateCreated }
+    }))
 
   function handleCreate() {
     const newTodo = { 
@@ -14,9 +23,10 @@ export default function CreateTodo({ user, handleAddTodo }) {
       dateCreated: Date.now(),
 
     };
-    handleAddTodo(newTodo);
+    CreateTodo(newTodo);
+    dispatch({ type: 'CREATE_TODO', title, description, author: user })
+    //handleAddTodo(newTodo);
   }
-
 
   function handleTitle(evt) {
     setTitle(evt.target.value);

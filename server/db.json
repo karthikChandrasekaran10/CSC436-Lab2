@@ -1,0 +1,107 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "portal",
+      "description": "Some content",
+      "author": "paul"
+    },
+    {
+      "title": "Chicken",
+      "desciption": "Food",
+      "author": "karthik",
+      "id": 2
+    },
+    {
+      "title": "Chicken",
+      "desciption": "Food",
+      "author": "karthik",
+      "id": 3
+    },
+    {
+      "title": "Chicken",
+      "desciption": "Food",
+      "author": "karthik",
+      "id": 4
+    },
+    {
+      "title": "Chicken",
+      "desciption": "Food",
+      "author": "karthik",
+      "id": 5
+    },
+    {
+      "title": "portal",
+      "description": "Some content",
+      "author": "paul",
+      "dateCreated": "11/5/2023",
+      "id": 6
+    },
+    {
+      "title": "portal",
+      "description": "Some content",
+      "author": "paul",
+      "dateCreated": "11/5/2023",
+      "id": 7
+    },
+    {
+      "title": "Chicken",
+      "description": "sad",
+      "author": "test",
+      "dateCreated": 1699391989910,
+      "id": 8
+    },
+    {
+      "title": "New Post",
+      "description": "Barca",
+      "author": "test",
+      "dateCreated": 1699392102813,
+      "id": 9
+    },
+    {
+      "title": "test 2",
+      "description": "Messi",
+      "author": "test",
+      "dateCreated": 1699392558013,
+      "id": 10
+    },
+    {
+      "title": "test 3",
+      "description": "Haaland",
+      "author": "test",
+      "dateCreated": 1699393343251,
+      "id": 11
+    },
+    {
+      "title": "Chicken",
+      "description": "Salad",
+      "author": "sads",
+      "dateCreated": 1699395050661,
+      "id": 12
+    }
+  ],
+  "users": [
+    {
+      "email": "karthik@gmail.com",
+      "password": "$2a$10$HeD4W24lEJJR3FLu1J8DB.Br.dBYwWklqDUVxR9gYxKeC2PnTvYbe",
+      "id": 1
+    },
+    {
+      "email": "newregister@gmail.com",
+      "password": "$2a$10$4Bon8s.stn6SKmjWIEzFDuxptSsEHfKq6hA204GY5rL5KfC.1jxz6",
+      "id": 2
+    }
+  ],
+  "themes": [
+    {
+      "id": 1,
+      "primaryColor": "deepskyblue",
+      "secondaryColor": "coral"
+    },
+    {
+      "primaryColor": "red",
+      "secondaryColor": "green",
+      "id": 2
+    }
+  ]
+}

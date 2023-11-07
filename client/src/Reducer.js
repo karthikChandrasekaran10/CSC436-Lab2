@@ -17,12 +17,14 @@ function todoReducer(state, action) {
       const newTodo = {
         id: uuidv4(),
         title: action.title,
-        content: action.description,
+        description: action.description,
         author: action.author,
         dateCreated: Date.now(),
     
       };
     return [newTodo, ...state];
+    case "FETCH_TODOS":
+    return action.todos; 
     case "TOGGLE_TODO":
         const toggleTodos = state.map(todos => 
             todos.id === action.id ? {...todos, completed :!todos.completed} :todos
