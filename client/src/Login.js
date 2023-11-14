@@ -12,7 +12,7 @@ export default function Login({ dispatchUser }) {
     data: { email: username, password },
   }));
   useEffect(() => {
-    if (user) {
+    if (user && user.isLoading === false) {
       if (user?.data?.user) {
         setLoginFailed(false);
         dispatchUser({ type: "LOGIN", username: user.data.user.email });
@@ -20,30 +20,30 @@ export default function Login({ dispatchUser }) {
         setLoginFailed(true);
       }
     }
-  }, [user]);
+  }, [user, dispatchUser]);
 
   function handleUsername(evt) {
     setUsername(evt.target.value);
+    if (loginFailed) setLoginFailed(false);
   }
   function handlePassword(evt) {
     setPassword(evt.target.value);
+    if (loginFailed) setLoginFailed(false);
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(username, password);
+  };
   return (
     <>
       {loginFailed && (
         <span style={{ color: "red" }}>Invalid username or password</span>
       )}
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          login(username, password);
-          //dispatchUser({ type: "LOGIN", username });
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <label htmlFor="login-username">Username:</label>
         <input
-          type="text"
+          type="text" 
           name="login-username"
           id="login-username"
           value={username}

@@ -1,83 +1,39 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "portal",
-      "description": "Some content",
-      "author": "paul"
+      "title": "Test 1",
+      "description": "sadjkhbas",
+      "author": "test@gmail.com",
+      "dateCreated": 1699991673575,
+      "id": 1
     },
     {
-      "title": "Chicken",
-      "desciption": "Food",
-      "author": "karthik",
+      "title": "Test 2",
+      "description": "sadjkhbas",
+      "author": "test@gmail.com",
+      "dateCreated": 1699991676903,
       "id": 2
     },
     {
-      "title": "Chicken",
-      "desciption": "Food",
-      "author": "karthik",
+      "title": "Test 3",
+      "description": "sadjkhbas",
+      "author": "test@gmail.com",
+      "dateCreated": 1699991679977,
       "id": 3
     },
     {
-      "title": "Chicken",
-      "desciption": "Food",
-      "author": "karthik",
+      "title": "",
+      "description": "",
+      "author": "test@gmail.com",
+      "dateCreated": 1699994595939,
       "id": 4
     },
     {
       "title": "Chicken",
-      "desciption": "Food",
-      "author": "karthik",
-      "id": 5
-    },
-    {
-      "title": "portal",
-      "description": "Some content",
-      "author": "paul",
-      "dateCreated": "11/5/2023",
-      "id": 6
-    },
-    {
-      "title": "portal",
-      "description": "Some content",
-      "author": "paul",
-      "dateCreated": "11/5/2023",
-      "id": 7
-    },
-    {
-      "title": "Chicken",
       "description": "sad",
-      "author": "test",
-      "dateCreated": 1699391989910,
-      "id": 8
-    },
-    {
-      "title": "New Post",
-      "description": "Barca",
-      "author": "test",
-      "dateCreated": 1699392102813,
-      "id": 9
-    },
-    {
-      "title": "test 2",
-      "description": "Messi",
-      "author": "test",
-      "dateCreated": 1699392558013,
-      "id": 10
-    },
-    {
-      "title": "test 3",
-      "description": "Haaland",
-      "author": "test",
-      "dateCreated": 1699393343251,
-      "id": 11
-    },
-    {
-      "title": "Chicken",
-      "description": "Salad",
-      "author": "sads",
-      "dateCreated": 1699395050661,
-      "id": 12
+      "author": "test@gmail.com",
+      "dateCreated": 1700000195213,
+      "id": 5
     }
   ],
   "users": [
@@ -90,6 +46,16 @@
       "email": "newregister@gmail.com",
       "password": "$2a$10$4Bon8s.stn6SKmjWIEzFDuxptSsEHfKq6hA204GY5rL5KfC.1jxz6",
       "id": 2
+    },
+    {
+      "email": "test@gmail.com",
+      "password": "$2a$10$hdfj7mRIdIBEhV2w4BXClue6RnDoW.RYXqzFDwve7SnKd0rgueXJO",
+      "id": 3
+    },
+    {
+      "email": "karthik1@gmail.com",
+      "password": "$2a$10$hk5CGYOCpwAd1DCCgYj.sul.PhnxhSUihh8uozAOWobkxfKYvku0e",
+      "id": 4
     }
   ],
   "themes": [

@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 function userReducer(state, action) {
   switch (action.type) {
@@ -20,17 +20,18 @@ function todoReducer(state, action) {
         description: action.description,
         author: action.author,
         dateCreated: Date.now(),
-    
       };
-    return [newTodo, ...state];
+      return [newTodo, ...state];
     case "FETCH_TODOS":
-    return action.todos; 
+      return action.todos;
     case "TOGGLE_TODO":
-        const toggleTodos = state.map(todos => 
-            todos.id === action.id ? {...todos, completed :!todos.completed} :todos
-            );
-        return toggleTodos;    
-    case "DELETE_TODO":
+      const toggleTodos = state.map((todos) =>
+        todos.id === action.id
+          ? { ...todos, completed: !todos.completed }
+          : todos
+      );
+      return toggleTodos;
+      case "DELETE_TODO":
         const updateTodo= state.filter(todos => todos.id !== action.todos);
         return updateTodo;
     default:
