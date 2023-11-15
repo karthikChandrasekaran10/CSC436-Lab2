@@ -1,11 +1,12 @@
+// Todo.js
 import { useState } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "./Context";
-export default function Todo({title, description, author, dateCreated }) {
 
-  const {secondaryColor} = useContext(ThemeContext);
-  const [completed, setCompleted] = useState(false);
-  const [dateCompleted, setDateCompleted] = useState("");
+export default function Todo({ id, title, description, author, dateCreated, timeCompleted, completed: initialValue, toggleTodo }) {
+  const { secondaryColor } = useContext(ThemeContext);
+  const [completed, setCompleted] = useState(initialValue);
+  const [dateCompleted, setDateCompleted] = useState(timeCompleted || null);
 
   const handleToggleComplete = () => {
     setCompleted(!completed);
@@ -14,10 +15,12 @@ export default function Todo({title, description, author, dateCreated }) {
     } else {
       setDateCompleted(null);
     }
+    toggleTodo(id);
   };
+
   return (
     <div>
-      <h3 style={{color: secondaryColor}}>{title}</h3>
+      <h3 style={{ color: secondaryColor }}>{title}</h3>
       <p><b>{description}</b></p>
       <br />
       <p>
@@ -30,7 +33,7 @@ export default function Todo({title, description, author, dateCreated }) {
       <button onClick={handleToggleComplete}>
         {completed ? "Incomplete" : "Done"}
       </button>
-      { dateCompleted && (
+      {dateCompleted && (
         <p>Date Completed: {new Date(dateCompleted).toLocaleString()}</p>
       )}
     </div>

@@ -48,28 +48,13 @@ function App() {
     }
   },[todoResponse]);
 
-  const handleAddTodo = (newTodo) => {
-    dispatch({ type: "CREATE_TODO", ...newTodo });
-  };
-
-  const handleDeleteTodo = (todos) => {
-    dispatch({ type: "DELETE_TODO", todos });
-  };
-
-  const handleToggleTodo = (id) => {
-    dispatch({ type: "TOGGLE_TODO", id });
-  };
 
   let content;
   if (state.user) {
     content = (
       <>
-        <CreateTodo handleAddTodo={handleAddTodo} />
-        <TodoList
-          handleAddTodo={handleAddTodo}
-          handleDeleteTodo={handleDeleteTodo}
-          handleToggleTodo={handleToggleTodo}
-        />
+        <CreateTodo />
+        <TodoList />
       </>
     );
   }

@@ -1,32 +1,52 @@
+// TodoList.js
 import Todo from "./Todo";
-import { StateContext } from "./Context";
 import { useContext } from "react";
+import { StateContext } from "./Context";
+import { useResource } from "react-request-hook";
 
-export default function TodoList({handleDeleteTodo}) {
-  const {state} = useContext(StateContext);
+export default function TodoList() {
+  const { state, dispatch } = useContext(StateContext);
+  const {todos} = state;
 
-  // const [response, deleteTodo] = useResource(todoId => ({
-  //   url: '/todos/${todoId}',
-  //   method: 'delete',
-  // }));
+  const [deleteResponse, deleteTodo] = useResource((todoId) => ({
+    url: `/todos/${todoId}`,
+    method: 'delete',
+  }));
 
-  // useEffect(() => {
-  //   if (response && response.data && response.error === null) {
-  //     // Dispatch an action to remove the todo from local state
-  //     dispatch({ type: 'DELETE_TODO', id: response.data.id });
-  //   }
-  // }, [response, dispatch]);
+  const [toggleResponse, toggleTodo] = useResource((todoId,completed, dateCompleted) => ({
+    url: `/todos/${todoId}`,
+    method: 'patch',
+    data: {completed, dateCompleted},
+  }));
 
-  // const handleDeleteTodo = (todoId) => {
-  //   deleteTodo(todoId);
-  // };
+  
+
+  const handleDeleteTodo = (id) => {
+      const todoDelete = todos.find((item) => item.id ===id);
+      if(todoDelete){
+        deleteTodo(todoDelete.id);
+        dispatch({ type: 'DELETE_TODO', id: todoDelete.id });
+      }
+    };
+
+    const handleToggleTodo = (id) => {
+      const todoToggle = todos.find((item) => item.id ===id);
+      if (todoToggle) {
+        dispatch({ type: 'TOGGLE_TODO', id });
+      }
+      toggleTodo({
+        id: todoToggle.id,
+        completed: !todoToggle.completed,
+        dateCompleted:!todoToggle.completed ? new Date().toLocaleString():null,
+      });
+    };
 
   return (
     <div>
-      {state.todos.map((t) => (
+      {todos.map((t) => (
         <div key={t.id}>
-          <Todo {...t}  />
-          <button  onClick={()=>handleDeleteTodo(t.id)}>Delete</button>      
+          <Todo {...t} toggleTodo={() => handleToggleTodo(t.id)} />
+          <button onClick={() => handleDeleteTodo(t.id)}>Delete</button>
         </div>
       ))}
     </div>

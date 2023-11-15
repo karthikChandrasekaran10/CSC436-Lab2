@@ -1,39 +1,18 @@
 {
   "todos": [
     {
-      "title": "Test 1",
-      "description": "sadjkhbas",
+      "id": "a295bb9e-dc78-4c5e-b784-1b8838b971ed",
+      "title": "Barca",
+      "description": "Forca Barca",
       "author": "test@gmail.com",
-      "dateCreated": 1699991673575,
-      "id": 1
+      "dateCreated": 1700024538145
     },
     {
-      "title": "Test 2",
-      "description": "sadjkhbas",
-      "author": "test@gmail.com",
-      "dateCreated": 1699991676903,
-      "id": 2
-    },
-    {
-      "title": "Test 3",
-      "description": "sadjkhbas",
-      "author": "test@gmail.com",
-      "dateCreated": 1699991679977,
-      "id": 3
-    },
-    {
-      "title": "",
-      "description": "",
-      "author": "test@gmail.com",
-      "dateCreated": 1699994595939,
-      "id": 4
-    },
-    {
+      "id": "4a443ca9-56ee-40b5-930d-bd4da59febba",
       "title": "Chicken",
-      "description": "sad",
+      "description": "Fast food",
       "author": "test@gmail.com",
-      "dateCreated": 1700000195213,
-      "id": 5
+      "dateCreated": 1700024895917
     }
   ],
   "users": [
