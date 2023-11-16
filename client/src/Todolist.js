@@ -6,40 +6,40 @@ import { useResource } from "react-request-hook";
 
 export default function TodoList() {
   const { state, dispatch } = useContext(StateContext);
-  const {todos} = state;
+  const { todos } = state;
 
   const [deleteResponse, deleteTodo] = useResource((todoId) => ({
     url: `/todos/${todoId}`,
-    method: 'delete',
+    method: "delete",
   }));
 
-  const [toggleResponse, toggleTodo] = useResource((todoId,completed, dateCompleted) => ({
-    url: `/todos/${todoId}`,
-    method: 'patch',
-    data: {completed, dateCompleted},
-  }));
-
-  
+  const [toggleResponse, toggleTodo] = useResource(
+    (todoId, completed, dateCompleted) => ({
+      url: `/todos/${todoId}`,
+      method: "patch",
+      data: { completed, dateCompleted },
+    })
+  );
 
   const handleDeleteTodo = (id) => {
-      const todoDelete = todos.find((item) => item.id ===id);
-      if(todoDelete){
-        deleteTodo(todoDelete.id);
-        dispatch({ type: 'DELETE_TODO', id: todoDelete.id });
-      }
-    };
+    const todoDelete = todos.find((item) => item.id === id);
+    if (todoDelete) {
+      deleteTodo(todoDelete.id);
+      dispatch({ type: "DELETE_TODO", id: todoDelete.id });
+    }
+  };
 
-    const handleToggleTodo = (id) => {
-      const todoToggle = todos.find((item) => item.id ===id);
-      if (todoToggle) {
-        dispatch({ type: 'TOGGLE_TODO', id });
-      }
-      toggleTodo({
-        id: todoToggle.id,
-        completed: !todoToggle.completed,
-        dateCompleted:!todoToggle.completed ? new Date().toLocaleString():null,
-      });
-    };
+  const handleToggleTodo = (id) => {
+    const todoToggle = todos.find((item) => item.id === id);
+    if (todoToggle) {
+      dispatch({ type: "TOGGLE_TODO", id });
+      toggleTodo(
+        todoToggle.id,
+        !todoToggle.completed,
+        !todoToggle.completed ? new Date().toLocaleString() : null
+      );
+    }
+  };
 
   return (
     <div>
