@@ -8,15 +8,34 @@ export default function TodoList() {
   const { state, dispatch } = useContext(StateContext);
   const { todos } = state;
 
+  // const [deleteResponse, deleteTodo] = useResource((todoId) => ({
+  //   url: `/todos/${todoId}`,
+  //   method: "delete",
+  // }));
+
   const [deleteResponse, deleteTodo] = useResource((todoId) => ({
-    url: `/todos/${todoId}`,
+    url: `/todo/${todoId}`,
     method: "delete",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+    },
   }));
+
+  // const [toggleResponse, toggleTodo] = useResource(
+  //   (todoId, completed, dateCompleted) => ({
+  //     url: `/todos/${todoId}`,
+  //     method: "patch",
+  //     data: { completed, dateCompleted },
+  //   })
+  // );
 
   const [toggleResponse, toggleTodo] = useResource(
     (todoId, completed, dateCompleted) => ({
-      url: `/todos/${todoId}`,
+      url: `/todo/${todoId}`,
       method: "patch",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
       data: { completed, dateCompleted },
     })
   );
@@ -41,14 +60,27 @@ export default function TodoList() {
     }
   };
 
+  //   return (
+  //     <div>
+  //       {todos.map((t) => (
+  //         <div key={t.id}>
+  //           <Todo {...t} toggleTodo={() => handleToggleTodo(t.id)} />
+  //           <button onClick={() => handleDeleteTodo(t.id)}>Delete</button>
+  //         </div>
+  //       ))}
+  //     </div>
+  //   );
+  // }
   return (
     <div>
-      {todos.map((t) => (
-        <div key={t.id}>
-          <Todo {...t} toggleTodo={() => handleToggleTodo(t.id)} />
-          <button onClick={() => handleDeleteTodo(t.id)}>Delete</button>
-        </div>
-      ))}
+      {todos.length === 0 && <h2>No todos found.</h2>}
+      {todos.length > 0 &&
+        todos.map((t) => (
+          <div key={t.id}>
+            <Todo {...t} toggleTodo={() => handleToggleTodo(t.id)} />
+            <button onClick={() => handleDeleteTodo(t.id)}>Delete</button>
+          </div>
+        ))}
     </div>
   );
 }

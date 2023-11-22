@@ -1,3 +1,4 @@
+//App.js
 import { useReducer, useEffect, useState } from "react";
 import UserBar from "./Userbar";
 import CreateTodo from "./Createtodo";
@@ -35,20 +36,47 @@ function App() {
   //     .then((todos) => dispatch({ type: "FETCH_TODO", todos }));
   // }, []);
 
+  // const [todoResponse, getTodos] = useResource(() => ({
+  //   url: "/todos",
+  //   method: "get",
+  // }));
+
+  // useEffect(getTodos,[]);
+
+  // useEffect(()=>{
+  //   if(todoResponse && todoResponse.data){
+  //     dispatch({type:"FETCH_TODOS",todos:todoResponse.data.reverse()});
+  //   }
+  // },[todoResponse]);
   const [todoResponse, getTodos] = useResource(() => ({
     url: "/todos",
     method: "get",
+    headers: { Authorization: `${state?.user?.access_token}` },
   }));
-  
-  useEffect(getTodos,[]);
-  
-  useEffect(()=>{
-    if(todoResponse && todoResponse.data){
-      dispatch({type:"FETCH_TODOS",todos:todoResponse.data.reverse()});
+
+  // useEffect(() => {
+  //   if (state?.user?.access_token) {
+  //     getTodos();
+  //   }
+  // }, [state?.user?.access_token]);
+  useEffect(() => {
+    getTodos();
+  }, [state?.user?.access_token]);
+  useEffect(() => {
+    if (todoResponse && todoResponse.isLoading === false && todoResponse.data) {
+      dispatch({
+        type: "FETCH_TODOS",
+        todos: todoResponse.data.todos.reverse(),
+      });
     }
-  },[todoResponse]);
-
-
+  }, [todoResponse]);
+  useEffect(() => {
+    if (user) {
+      document.title = `${user.username}’s Blog`;
+    } else {
+      document.title = "Blog";
+    }
+  }, [user]);
   let content;
   if (state.user) {
     content = (
